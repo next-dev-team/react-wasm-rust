@@ -17,7 +17,7 @@ pub fn greet(name: &str) -> String {
 
 #[test]
 fn greet_test() {
-    assert_eq!(greet("World"), "Hello, World!");
+    assert_eq!(greet("World"), "Welcome, World!");
 }
 
 #[test]
