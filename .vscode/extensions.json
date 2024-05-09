@@ -1,7 +1,3 @@
 {
-  "recommendations": [
-    "antfu.iconify",
-    "dbaeumer.vscode-eslint",
-    "afzalsayed96.icones"
-  ]
+  "recommendations": ["dbaeumer.vscode-eslint"]
 }

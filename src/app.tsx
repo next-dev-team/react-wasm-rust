@@ -6,8 +6,12 @@ import { MenuDataItem } from '@ant-design/pro-components';
 import { RequestConfig, request as axios } from '@umijs/max';
 import { debounce, isEmpty } from 'lodash-es';
 import { createElement } from 'react';
-import wasmInit from 'wasm-lib';
 import { defaultSettings } from './utils';
+
+const wasmInit = async () => {
+  const wasm = await import('../wasm-lib');
+  return wasm;
+};
 
 const loginPath = '/auth/login';
 
@@ -89,12 +93,9 @@ export async function getInitialState(): Promise<{
   fetchUserInfo?: () => Promise<any | undefined>;
 }> {
   const token = getToken();
-  // init wasm
-  await wasmInit()
-    .then((instance) => {
-      console.log('wasm init', instance);
-    })
-    .catch((e) => console.error('init wasm error', e));
+  const wasm = await wasmInit();
+  window._wasm = wasm;
+  console.log('[_wasm]:', { ...wasm });
 
   if (!token) {
     return {

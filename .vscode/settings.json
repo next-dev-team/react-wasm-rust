@@ -26,5 +26,5 @@
     "tw\\.style\\(`([^)]*)\\)",
     "twColor\\(`([^)]*)`\\)"
   ],
-  "cSpell.words": ["nocheck"]
+  "cSpell.words": ["bindgen", "nocheck"]
 }

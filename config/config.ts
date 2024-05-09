@@ -1,6 +1,7 @@
 import { defineConfig } from '@umijs/max';
+import WasmPackPlugin from '@wasm-tool/wasm-pack-plugin';
 import dotEnv from 'dotenv';
-import { dirname } from 'path';
+import { dirname, resolve } from 'path';
 import { autoImportPlugin } from './auto-import';
 import { defaultSettings } from './defaultSettings';
 import proxy from './proxy';
@@ -58,6 +59,7 @@ export default defineConfig({
   hash: true,
   // https: {},
   proxy,
+  scripts: [],
   // Routing is not configured, the default is conventional routing
   routes,
   // alias configuration
@@ -123,6 +125,28 @@ export default defineConfig({
     // )
     config.plugin('unplugin-auto-import').use(autoImportPlugin());
 
+    config.plugin('wasm-pack').use(
+      new WasmPackPlugin({
+        crateDirectory: resolve(__dirname, '..'),
+        outDir: 'wasm-lib',
+      }),
+    );
+    config.set('experiments', {
+      ...config.get('experiments'),
+      asyncWebAssembly: true,
+    });
+
+    const REG = /\.wasm$/;
+
+    config.module.rule('asset').exclude.add(REG).end();
+
+    config.module
+      .rule('wasm')
+      .test(REG)
+      .exclude.add(/node_modules/)
+      .end()
+      .type('webassembly/async')
+      .end();
     return config;
   },
   // 使用 antd

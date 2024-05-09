@@ -49,10 +49,14 @@ The next generation of admin enterprise applications with awesome architecture, 
 - Go tor src/locale/translation/\*
 - every add split file need to import to \_all
 
-## Rust lib
+## Rust lib ref
 
+<https://github.com/MoeYc/umi4-wasm-example/blob/main/packages/widget/.umirc.ts>
+<https://github.com/tkat0/react-wasm-tutorial>
+<https://github.com/DavidZemon/SccaSoloPointsCalculator/tree/master>
+
+<https://github.com/monroeclinton/wasm-learn>
 more <https://www.tkat0.dev/posts/how-to-create-a-react-app-with-rust-and-wasm/#create-rust-library-for-wasm>
- `npm install ./wasm-lib/pkg`
 
 ## TODO
 

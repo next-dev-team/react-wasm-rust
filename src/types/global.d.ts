@@ -1,30 +1,34 @@
 // Manual export global type
 
-export {}
+export {};
 
 declare global {
   const SvgComponent: (
     props: React.SVGProps<SVGSVGElement>,
-  ) => React.ReactElement
+  ) => React.ReactElement;
 
   interface Window {
-    tabsAction: import('use-switch-tabs').ActionType
-    routerBase: string
+    tabsAction: import('use-switch-tabs').ActionType;
+    routerBase: string;
+    _wasm: typeof import('../../wasm-lib');
   }
+
+  export const _wasm: typeof import('../../wasm-lib');
+
   /**
    *  ========= Locale ================
    */
 
-  type LangKey = LiteralUnion<'en-US' | 'zh-CN', string>
+  type LangKey = LiteralUnion<'en-US' | 'zh-CN', string>;
 
   type TranKey = keyof ReturnType<
-    typeof import('@/locales/translation/_all')['allTranslation']
-  >
+    (typeof import('@/locales/translation/_all'))['allTranslation']
+  >;
 
   /**
    *  ========= UMI ================
    */
-  type RunTimeLayoutConfig = import('@umijs/max').RunTimeLayoutConfig
+  type RunTimeLayoutConfig = import('@umijs/max').RunTimeLayoutConfig;
   type LayoutSettings =
-    import('../../config/defaultSettings/defaultSettings').SettingsConfig
+    import('../../config/defaultSettings/defaultSettings').SettingsConfig;
 }

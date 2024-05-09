@@ -78,3 +78,5 @@ dist_electron
 
 /wasm-lib/target
 wasm-lib/target
+/target
+/pkg

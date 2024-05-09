@@ -1,23 +1,28 @@
-import { TransValue } from '@/locales/translation/_all'
-import { formatMessage } from '@umijs/max'
-import capitalize from 'lodash-es/capitalize'
+import { TransValue } from '@/locales/translation/_all';
+import capitalize from 'lodash-es/capitalize';
+import { formatMessage } from 'react-intl';
 
 type MessageDescriptor = {
-  id?: TranKey
-  description?: string | object
-  defaultMessage?: string
-}
+  id?: TranKey;
+  description?: string | object;
+  defaultMessage?: string;
+};
 
 type Namespaced<T> = {
-  [P in keyof T & string as `${P}`]: T[P]
-}
+  [P in keyof T & string as `${P}`]: T[P];
+};
 
+/**
+ * Translate message
+ * @param descriptor - message descriptor
+ * @param values - values for placeholders in the message
+ */
 export const t = (
   descriptor: MessageDescriptor | TranKey,
   values?: Partial<Namespaced<TransValue>>,
 ) => {
   const id =
-    (descriptor as any)?.id || typeof descriptor === 'string' ? descriptor : ''
+    (descriptor as any)?.id || typeof descriptor === 'string' ? descriptor : '';
 
   // formatMessage is deprecated because it requires browser reload when change the language,
   // but our case we need to reload to make server get new language
@@ -33,5 +38,5 @@ export const t = (
     },
     //@ts-ignore
     values?.[id] || {},
-  )
-}
+  );
+};

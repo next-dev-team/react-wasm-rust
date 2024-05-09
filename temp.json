@@ -1,0 +1,6 @@
+{
+  "documents": "documents",
+  "{greet}, {name}, { greet: a, name: Sila }": "{greet}, {name}, { greet: a, name: Sila }",
+  "Remove All": "Remove All",
+  "welcome,{welcome: { name: sila, days: Monday }}": "welcome,{welcome: { name: sila, days: Monday }}"
+}
