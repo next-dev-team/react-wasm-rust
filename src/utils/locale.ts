@@ -35,7 +35,6 @@ export const t = (
       ...(descriptor as any),
       id,
     },
-    //@ts-ignore
-    values?.[id] || {},
+    values || {},
   );
 };

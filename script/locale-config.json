@@ -3,7 +3,8 @@
   "defaultLang": "en-US",
   "langs": [
     "zh-CN",
-    "en-US"
+    "en-US",
+    "km-KH"
   ],
   "filetype": "json"
 }

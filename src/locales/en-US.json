@@ -1,6 +1,10 @@
 {
   "documents": "documents",
-  "Welcome to WebAssembly Rust + React": "Welcome to WebAssembly Rust + React",
+  "Failed to add todo": "Failed to add todo",
+  "Title": "Title",
+  "Description": "Description",
+  "Welcome to {lang} {lang1} + {lang2}": "Welcome to {lang} {lang1} + {lang2}",
+  "Are you sure to remove all todo?": "Are you sure to remove all todo?",
   "Remove All": "Remove All",
   "welcome": "welcome"
 }

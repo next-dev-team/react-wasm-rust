@@ -2,10 +2,15 @@
  * any export here must be provide or match with UMI app.tsx configs
  */
 
-import { MenuDataItem } from '@ant-design/pro-components';
-import { RequestConfig, request as axios } from '@umijs/max';
+import {
+  MenuDataItem,
+  ProProvider,
+  createIntl,
+} from '@ant-design/pro-components';
+import { RequestConfig, request as axios, getLocale } from '@umijs/max';
 import { debounce, isEmpty } from 'lodash-es';
 import { createElement } from 'react';
+import { kmLocale } from './locales/translation/extra-km';
 import { defaultSettings } from './utils';
 
 const wasmInit = async () => {
@@ -25,19 +30,6 @@ const loginPath = '/auth/login';
 
 // })
 
-// export function innerProvider(container: any) {
-//   return React.createElement(Foo, { title: 'innerProvider' }, container);
-// }
-//
-// export function i18nProvider(container: any) {
-//   return React.createElement(Foo, { title: 'i18nProvider' }, container);
-// }
-//
-// export function dataflowProvider(container: any) {
-//   return React.createElement(Foo, { title: 'dataflowProvider' }, container);
-// }
-//
-
 export function onRouteChange({ routes = {}, location }: any) {
   const token = getToken();
 
@@ -53,14 +45,6 @@ export function onRouteChange({ routes = {}, location }: any) {
     $history.push(_route.LOGIN);
   }
 }
-
-// export function patchRoutes({ routes, routeComponents }: any) {
-//   console.log('patchRoutes', routes, routeComponents)
-// }
-
-// export function patchClientRoutes({ routes }: any) {
-//   console.log('patchClientRoutes', routes, Array.isArray(routes))
-// }
 
 const filterByMenuData = (
   data: MenuDataItem[] = [],
@@ -99,8 +83,8 @@ export async function getInitialState(): Promise<{
 }> {
   const token = getToken();
   const wasm = await wasmInit();
-  window._wasm = wasm;
-  console.log('[_wasm]:', { ...wasm });
+  window._wasm = wasm as any;
+  // console.log('[_wasm]:', { ...wasm });
 
   if (!token) {
     return {
@@ -122,19 +106,6 @@ export async function getInitialState(): Promise<{
       $history.push(loginPath);
     }
   };
-  // const fetchUserInfo1 = async () => {
-  //   try {
-  //     return {
-  //       theme: 'light',
-  //       name: 'Zila',
-  //       avatar:
-  //         'https://gw.alipayobjects.com/zos/antfincdn/XAosXuNZyF/BiazfanxmamNRoxxVxka.png',
-  //     }
-  //   } catch (error) {
-  //     $history.push(loginPath)
-  //   }
-  //   return undefined
-  // }
 
   // 如果是登录页面，不执行
   if ($history.location.pathname !== loginPath) {
@@ -153,8 +124,27 @@ export async function getInitialState(): Promise<{
   };
 }
 
+const getExtraProLocale = ({ locale, values }: any) => {
+  const intlMap: Record<string, any> = {
+    'km-KH': createIntl('km-KH', kmLocale),
+    'lo-LA': createIntl('lo-LA', {}),
+  };
+  const intl = intlMap?.[locale];
+  const nextValues = intl
+    ? {
+        ...values,
+        intl,
+      }
+    : values;
+  return nextValues;
+};
+
 // global provider
 function WrapperApp(props: any) {
+  const locale = getLocale();
+  const values = useContext(ProProvider);
+  const extraProLocale = getExtraProLocale({ locale, values });
+
   return (
     <>
       {/* 
@@ -166,9 +156,11 @@ function WrapperApp(props: any) {
           ...defaultSettings.themeConfig,
         }}
       >
-        {/* ---- children ----- */}
-        {props.children}
-        {/* ----------------- */}
+        <ProProvider.Provider value={extraProLocale}>
+          {/* ---- children ----- */}
+          {props.children}
+          {/* ----------------- */}
+        </ProProvider.Provider>
       </ConfigProvider>
     </>
   );

@@ -1,6 +1,9 @@
+mod utils;
+
 use serde::{Deserialize, Serialize};
 use serde_json;
 use serde_wasm_bindgen::to_value;
+use utils::to_uppercase_custom;
 use wasm_bindgen::prelude::*;
 use web_sys::{window, Storage};
 
@@ -23,7 +26,12 @@ pub fn dec(a: i32, b: i32) -> i32 {
 }
 
 #[wasm_bindgen]
-pub fn greet(name: &str) -> String {
+pub fn greet(name: &str, is_upper: Option<bool>) -> String {
+    let name = if is_upper.unwrap_or(false) {
+        to_uppercase_custom(name)
+    } else {
+        name.to_string()
+    };
     format!("Welcome, {}!", name)
 }
 
@@ -33,13 +41,19 @@ pub struct TodoItem {
     id: usize,
     text: String,
     done: bool,
+    description: Option<String>,
 }
 
 #[wasm_bindgen]
 impl TodoItem {
     #[wasm_bindgen(constructor)]
-    pub fn new(id: usize, text: String, done: bool) -> TodoItem {
-        TodoItem { id, text, done }
+    pub fn new(id: usize, text: String, description: Option<String>, done: bool) -> TodoItem {
+        TodoItem {
+            id,
+            text,
+            done,
+            description,
+        }
     }
 }
 
@@ -58,22 +72,37 @@ impl TodoList {
     }
 
     #[wasm_bindgen]
-    pub fn add_todo_item(&mut self, id: usize, text: String, done: bool) {
-        let item = TodoItem::new(id, text.clone(), done);
+    pub fn add_todo_item(
+        &mut self,
+        id: usize,
+        text: String,
+        description: Option<String>,
+        done: bool,
+    ) {
+        let item = TodoItem::new(id, text.clone(), description, done);
         log(&format!("Adding TODO item: {:?}", item));
         self.items.push(item);
         save_items_to_storage(&self.items);
     }
 
+    /**
+     * Remove a TODO item from the list.
+     *
+     * If `id` is provided, the item with that id will be removed,
+     * otherwise all items will be removed.
+     *
+     * @param id Optional TODO item id
+     */
     #[wasm_bindgen]
-    pub fn remove_item(&mut self, id: usize) {
-        self.items.retain(|item| item.id != id);
-        save_items_to_storage(&self.items);
-    }
-
-    #[wasm_bindgen]
-    pub fn remove_all(&mut self) {
-        self.items.clear();
+    pub fn remove_item(&mut self, id: Option<usize>) {
+        match id {
+            Some(id) => {
+                self.items.retain(|item| item.id != id);
+            }
+            None => {
+                self.items.clear();
+            }
+        }
         save_items_to_storage(&self.items);
     }
 

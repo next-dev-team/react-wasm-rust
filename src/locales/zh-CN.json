@@ -1,6 +1,10 @@
 {
+  "Are you sure to remove all todo?": "您确定要删除所有待办事项吗？",
+  "Description": "描述",
+  "Failed to add todo": "添加待办事项失败",
   "Remove All": "全部移除",
-  "Welcome to WebAssembly Rust + React": "欢迎来到 WebAssembly Rust + React",
+  "Title": "标题",
+  "Welcome to {lang} {lang1} + {lang2}": "欢迎来到 {lang} {lang1} + {lang2}",
   "documents": "文件",
   "welcome": "欢迎"
 }

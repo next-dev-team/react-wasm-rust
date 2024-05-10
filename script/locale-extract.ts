@@ -19,15 +19,17 @@ const scanTranslateFile = async () => {
 
     const obj = keys.reduce(
       (acc2, cur) => {
+        // console.log('lang scan====>', cur);
         if (cur && cur.startsWith('../')) return acc2;
         let extractedText = cur;
         // dynamic translate pattern
         let index = cur.indexOf("', {");
+
         if (index !== -1) {
           extractedText = cur.substring(0, index);
-          console.log('dynamic', extractedText);
+          // console.log('dynamic', extractedText);
         } else {
-          console.log('normal', cur);
+          // console.log('normal', cur);
         }
         const cleanAcc = extractedText.trim().replace(/['"]/g, '');
         acc2[cleanAcc] = cleanAcc;

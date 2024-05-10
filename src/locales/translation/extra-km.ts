@@ -1,0 +1,33 @@
+export const kmLocale = {
+  tableForm: {
+    search: 'ស្វែងរក',
+    reset: 'ផ្ទាំងឡើងវិញ',
+    submit: 'បញ្ចូល',
+    collapsed: 'ពង្រីកបង្ហាញ',
+    expand: 'បង្ហាញ',
+    inputPlaceholder: 'សូមបញ្ចូល',
+    selectPlaceholder: 'សូមជ្រើសរើស',
+  },
+  alert: {
+    clear: 'លុបចោល',
+  },
+  tableToolBar: {
+    leftPin: 'ជំងឺជាមុខដៃឆ្វេង',
+    rightPin: 'ជំងឺជាមុខដៃស្តាំ',
+    noPin: 'មិនជំងឺមុខដៃ',
+    leftFixedTitle: 'បានជំងឺជាមុខដៃឆ្វេង',
+    rightFixedTitle: 'បានជំងឺជាមុខដៃស្តាំ',
+    noFixedTitle: 'មិនមានជំងឺមុខដៃ',
+    reset: 'ផ្ទាំងឡើងវិញ',
+    columnDisplay: 'បង្ហាញជួរបញ្ជា',
+    columnSetting: 'កំណត់ការជួរបញ្ជា',
+    fullScreen: 'ទទួលបានមួយធំ',
+    exitFullScreen: 'ចាកចេញពីទទួលបានមួយធំ',
+    reload: 'ផ្ទុកឡើងវិញ',
+    density: 'បង្ហាញ',
+    densityDefault: 'ជំនាញបង្ហាញបទ',
+    densityLarger: 'បង្ហាញទំហំធំ',
+    densityMiddle: 'បង្ហាញទំហំកណ្ដាល',
+    densitySmall: 'បង្ហាញទំហំតូច',
+  },
+};
