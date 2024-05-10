@@ -49,6 +49,6 @@ The next generation of enterprise web applications with react and wasm `Preview:
 
 Any type of contribution is welcome, here are some examples of how you may contribute to this project:
 
-- Submit [issues](https://github.com/next-dev-team/react-next-admin/issues) to report bugs or ask questions.
+- Submit [issues](https://github.com/next-dev-team/react-wasm/issues) to report bugs or ask questions.
 
 ## MIT License
