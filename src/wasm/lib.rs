@@ -85,6 +85,22 @@ impl TodoList {
         save_items_to_storage(&self.items);
     }
 
+    #[wasm_bindgen]
+    pub fn edit_todo_item(
+        &mut self,
+        id: usize,
+        text: String,
+        description: Option<String>,
+        done: bool,
+    ) {
+        if let Some(item) = self.items.iter_mut().find(|item| item.id == id) {
+            item.text = text;
+            item.description = description;
+            item.done = done;
+            save_items_to_storage(&self.items);
+        }
+    }
+
     /**
      * Remove a TODO item from the list.
      *

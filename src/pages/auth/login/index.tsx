@@ -1,11 +1,12 @@
 import { ModalForm, ProFormTextArea } from '@ant-design/pro-components';
-import { message } from 'antd';
+import { useForm } from 'antd/es/form/Form';
+import { isNumber } from 'lodash-es';
 import { SelectLang } from 'umi';
 
 type Todo = {
   id: number;
   text: string;
-  completed: boolean;
+  done: boolean;
   description?: string;
 };
 
@@ -19,6 +20,9 @@ const Login = () => {
     openModal: false,
     todo: wasmTodo.get_todo_items() as Todo[],
   });
+  const [formRef] = useForm<Todo>();
+  const formId = formRef.getFieldValue('id');
+  const title = formId ? t('Edit Todo {id}', { id: formId }) : t('Add Todo');
 
   const updateTodo = () => {
     state.todo = wasmTodo.get_todo_items();
@@ -33,15 +37,17 @@ const Login = () => {
     setCount((prev) => _wasm.dec(prev, 1));
   };
 
-  const submitTodo = async ({ completed, text, description }: Todo) => {
-    try {
-      wasmTodo.add_todo_item(state.todo.length, text, description, !!completed);
-      updateTodo();
-      state.openModal = false;
-    } catch (error) {
-      message.error(t('Failed to add todo'));
-      console.error('error add', error);
+  const submitTodo = async ({ id, done, text, description }: Todo) => {
+    const isEditMode = isNumber(id);
+
+    if (isEditMode) {
+      wasmTodo.edit_todo_item(id, text, description, !!done);
+    } else {
+      const newId = state.todo[state.todo.length - 1].id + 1;
+      wasmTodo.add_todo_item(newId, text, description, !!done);
     }
+    updateTodo();
+    state.openModal = false;
   };
 
   const onRemoveTodo = (item: Todo) => {
@@ -49,18 +55,25 @@ const Login = () => {
     updateTodo();
   };
 
+  const handleEditClick = (item: Todo) => {
+    state.openModal = true;
+    formRef.setFieldsValue(item);
+  };
+
   return (
     <>
       <ModalForm
+        form={formRef as any}
         width={480}
         onFinish={submitTodo}
-        title="Add Todo"
+        title={title}
         open={state.openModal}
         modalProps={{
           destroyOnClose: true,
           onCancel: () => (state.openModal = false),
         }}
       >
+        <ProFormText name="id" hidden label={t('ID')} />
         <ProFormText
           label={t('Title')}
           name="text"
@@ -89,23 +102,23 @@ const Login = () => {
         }}
         tabList={[
           {
-            tab: 'Testing',
+            tab: t('Testing'),
             key: 'test',
             children: (
               <Space>
                 <Button onClick={handleDec} danger>
-                  Dec -
+                  {t('Decrement')} -
                 </Button>
                 <GText>{count}</GText>
                 <Button type="primary" onClick={handleAdd}>
-                  Add +
+                  {t('Add')} +
                 </Button>
                 <Button>{_wasm.greet('Sila', true)}</Button>
               </Space>
             ),
           },
           {
-            tab: 'Todo',
+            tab: t('Todo'),
             key: 'todo',
             children: (
               <ProCard
@@ -116,7 +129,7 @@ const Login = () => {
                       onClick={() => (state.openModal = true)}
                     >
                       <PlusOutlined />
-                      Add todo
+                      {t('Add todo')}
                     </Button>
                     <Popconfirm
                       title={t('Are you sure to remove all todo?')}
@@ -136,13 +149,30 @@ const Login = () => {
                   renderItem={(item) => (
                     <List.Item
                       actions={[
-                        <Button type="link" onClick={() => onRemoveTodo(item)}>
-                          Delete
+                        <Button
+                          type="link"
+                          onClick={() => handleEditClick(item)}
+                        >
+                          {t('Edit')}
+                        </Button>,
+                        <Button
+                          size="small"
+                          danger
+                          onClick={() => onRemoveTodo(item)}
+                        >
+                          {t('Delete')}
                         </Button>,
                       ]}
                     >
                       <List.Item.Meta
-                        title={item.text}
+                        title={
+                          <Space>
+                            <GText>
+                              {item.id.toString().padStart(2, '0')} -
+                            </GText>
+                            <GText>{item.text}</GText>
+                          </Space>
+                        }
                         description={item.description}
                       />
                     </List.Item>

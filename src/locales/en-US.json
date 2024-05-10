@@ -1,10 +1,19 @@
 {
   "documents": "documents",
-  "Failed to add todo": "Failed to add todo",
+  "Edit Todo {id}": "Edit Todo {id}",
+  "Add Todo": "Add Todo",
+  "ID": "ID",
   "Title": "Title",
   "Description": "Description",
   "Welcome to {lang} {lang1} + {lang2}": "Welcome to {lang} {lang1} + {lang2}",
+  "Testing": "Testing",
+  "Decrement": "Decrement",
+  "Add": "Add",
+  "Todo": "Todo",
+  "Add todo": "Add todo",
   "Are you sure to remove all todo?": "Are you sure to remove all todo?",
   "Remove All": "Remove All",
+  "Edit": "Edit",
+  "Delete": "Delete",
   "welcome": "welcome"
 }

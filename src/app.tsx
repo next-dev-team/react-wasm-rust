@@ -33,11 +33,11 @@ const loginPath = '/auth/login';
 export function onRouteChange({ routes = {}, location }: any) {
   const token = getToken();
 
-  const outsideLayout = Object.values(routes).filter((item) => {
+  const outsideLayout = Object.values(routes).filter((item: any) => {
     return 'layout' in item && !item.layout;
   });
   const isOutsideLayout = outsideLayout.some(
-    (item) => item.path === location.pathname,
+    (item: any) => item.path === location.pathname,
   );
 
   if (!token && !isOutsideLayout && !(location.pathname === _route.LOGIN)) {
