@@ -3,6 +3,30 @@
 
 The next generation of enterprise web applications with react and wasm `Preview:`<https://wasm-react.netlify.app>
 
+## Teach Stack
+
+- [WasmRust](https://github.com/rustwasm/wasm-bindgen) Wasm with rust using Wasm-bindgen
+- [Webpack MFSU](https://umijs.org/blog/mfsu-faster-than-vite) - Familiar with Webpack features
+- [React](https://react.dev/) - React official website
+- [TypeScript](https://www.typescriptlang.org/) - Familiar with the basic syntax of `TypeScript`
+- [Es6](http://es6.ruanyifeng.com/) - Familiar with es6 basic syntax
+- [Ant-Design V5](https://ant.design) - Enterprise UI library
+- [Antd procomponents](https://procomponents.ant.design/) - Antd procomponent
+
+## Development
+
+ Preparation tools
+
+- [Node](http://nodejs.org/) and [git](https://git-scm.com/)
+- [Rust](https://www.rust-lang.org/tools/install)
+
+ Develop
+
+- Install pnpm: `npm i -g pnpm`
+- Compile rust: `Cargo update`
+- Run dev: `npm run dev`
+- Run build: `npm run build`
+
 ## Translate
 
 - Fist init check config in `script/locale/locale-config.json`
@@ -12,17 +36,6 @@ The next generation of enterprise web applications with react and wasm `Preview:
 - Setup: `lobe-i18n -0`
 - Enter key or proxy server
 - Translate `npm run locale:sync` will auto extract all translate to default lang and translate to all language that config in scrip/locale-config.json
-
-## Teach Stack & Preparation
-
-- [Node](http://nodejs.org/) and [git](https://git-scm.com/) - Project development environment
-- [WasmRust](https://github.com/rustwasm/wasm-bindgen) Wasm with rust using Wasm-bindgen
-- [Webpack MFSU](https://umijs.org/blog/mfsu-faster-than-vite) - Familiar with Webpack features
-- [React](https://react.dev/) - React official website
-- [TypeScript](https://www.typescriptlang.org/) - Familiar with the basic syntax of `TypeScript`
-- [Es6](http://es6.ruanyifeng.com/) - Familiar with es6 basic syntax
-- [Ant-Design V5](https://ant.design) - Enterprise UI library
-- [Antd procomponents](https://procomponents.ant.design/) - Antd procomponent
 
 ## Rust lib ref
 
