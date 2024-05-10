@@ -43,7 +43,7 @@ const Login = () => {
     if (isEditMode) {
       wasmTodo.edit_todo_item(id, text, description, !!done);
     } else {
-      const newId = state.todo[state.todo.length - 1].id + 1;
+      const newId = (state.todo?.[state.todo.length - 1]?.id || 0) + 1;
       wasmTodo.add_todo_item(newId, text, description, !!done);
     }
     updateTodo();
