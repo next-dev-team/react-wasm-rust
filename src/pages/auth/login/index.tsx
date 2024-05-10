@@ -1,5 +1,4 @@
 import { ProFormTextArea } from '@ant-design/pro-components';
-import { FormattedMessage } from 'react-intl';
 
 type Todo = {
   id: number;
@@ -22,10 +21,6 @@ const Login = () => {
     refresh();
   };
 
-  const a = 'hello';
-
-  console.log('ddd', t('{greet}, {name}', { greet: a, name: 'Sila' }));
-
   const handleAdd = () => {
     setCount((prev) => _wasm.add(prev, 1));
   };
@@ -35,8 +30,7 @@ const Login = () => {
 
   return (
     <PageContainer
-      title={<FormattedMessage defaultMessage="foo" id="bar" />}
-      // title="Welcome to WebAssembly Rust + React"
+      title={t('Welcome to WebAssembly Rust + React')}
       tabActiveKey={state.activeTab}
       tabProps={{
         destroyInactiveTabPane: false,

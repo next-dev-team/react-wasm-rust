@@ -1,6 +1,5 @@
-import { TransValue } from '@/locales/translation/_all';
+import { formatMessage } from '@umijs/max';
 import capitalize from 'lodash-es/capitalize';
-import { formatMessage } from 'react-intl';
 
 type MessageDescriptor = {
   id?: TranKey;
@@ -19,7 +18,7 @@ type Namespaced<T> = {
  */
 export const t = (
   descriptor: MessageDescriptor | TranKey,
-  values?: Partial<Namespaced<TransValue>>,
+  values?: Partial<Namespaced<Record<string, any>>>,
 ) => {
   const id =
     (descriptor as any)?.id || typeof descriptor === 'string' ? descriptor : '';

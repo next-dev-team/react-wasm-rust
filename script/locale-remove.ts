@@ -1,27 +1,21 @@
 import * as fs from 'fs';
+import * as glob from 'glob';
 import * as path from 'path';
-import { filetype, langs, removeLangs } from './locale-config.json';
+import { langs } from './locale-config.json';
 
 const localeDir = path.resolve(__dirname, '../src/locales');
-const localeRemove = filetype === 'json' ? 'ts' : 'json';
 
-const removeLocales = async (removeAll = false) => {
-  const removeLang = removeAll ? langs : removeLangs;
-  for (const lang of removeLang) {
-    const localePath = path.join(localeDir, `${lang}.${localeRemove}`);
-    try {
-      if (
-        await fs.promises
-          .stat(localePath)
-          .then(() => true)
-          .catch(() => false)
-      ) {
-        await fs.promises.unlink(localePath);
-      } else {
-        console.log(`${localePath} does not exist, skipping.`);
+const removeLocales = async () => {
+  const jsonFiles = glob.sync(path.join(localeDir, '*.json'));
+  for (const file of jsonFiles) {
+    const lang = path.basename(file, '.json');
+    if (!langs.includes(lang)) {
+      try {
+        await fs.promises.unlink(file);
+        console.log(`removed ${file}`);
+      } catch (error) {
+        console.error(`Error when removing ${file}`, error);
       }
-    } catch (error) {
-      console.error(`Error when removing ${localePath}`, error);
     }
   }
 };

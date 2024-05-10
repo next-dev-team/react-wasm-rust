@@ -21,9 +21,7 @@ declare global {
 
   type LangKey = LiteralUnion<'en-US' | 'zh-CN', string>;
 
-  type TranKey = keyof ReturnType<
-    (typeof import('@/locales/translation/_all'))['allTranslation']
-  >;
+  type TranKey = keyof typeof import('@/locales/en-US.json');
 
   /**
    *  ========= UMI ================

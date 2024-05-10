@@ -26,5 +26,12 @@
     "tw\\.style\\(`([^)]*)\\)",
     "twColor\\(`([^)]*)`\\)"
   ],
-  "cSpell.words": ["bindgen", "nocheck"]
+  "cSpell.words": [
+    "bindgen",
+    "nocheck"
+  ],
+  "i18n-ally.localesPaths": [
+    "lang",
+    "src/locales"
+  ]
 }

@@ -125,6 +125,7 @@ export default defineConfig({
     // )
     config.plugin('unplugin-auto-import').use(autoImportPlugin());
 
+    // use wasm-pack
     config.plugin('wasm-pack').use(
       new WasmPackPlugin({
         crateDirectory: resolve(__dirname, '..'),
@@ -137,9 +138,7 @@ export default defineConfig({
     });
 
     const REG = /\.wasm$/;
-
     config.module.rule('asset').exclude.add(REG).end();
-
     config.module
       .rule('wasm')
       .test(REG)
@@ -147,6 +146,7 @@ export default defineConfig({
       .end()
       .type('webassembly/async')
       .end();
+    // end wasm
     return config;
   },
   // 使用 antd

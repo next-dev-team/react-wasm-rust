@@ -27,6 +27,6 @@ const writeFile = () => {
   }
 };
 
-removeLocale(true).then(() => {
+removeLocale().then(() => {
   writeFile();
 });

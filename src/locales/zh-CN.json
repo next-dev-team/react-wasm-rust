@@ -1,14 +1,6 @@
 {
-  "component.switchTabs.closeCurrent": "关闭标签页",
-  "component.switchTabs.closeOthers": "关闭其他标签页",
-  "component.switchTabs.closeToRight": "关闭右侧标签页",
-  "component.tagSelect.all": "全部",
-  "component.tagSelect.collapse": "收起",
-  "component.tagSelect.expand": "展开",
+  "Remove All": "全部移除",
+  "Welcome to WebAssembly Rust + React": "欢迎来到 WebAssembly Rust + React",
   "documents": "文件",
-  "menu.documents": "文件",
-  "menu.list_page": "列表页面",
-  "menu.list_page.sub_page": "子页面",
-  "menu.login": "登录",
-  "menu.welcome": "欢迎"
+  "welcome": "欢迎"
 }

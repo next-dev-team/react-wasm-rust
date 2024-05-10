@@ -3,7 +3,6 @@
   "version": "0.0.3",
   "private": true,
   "scripts": {
-    "dev:wasm": "npm run build:wasm",
     "dev": "pnpm env:dev max dev",
     "build": "pnpm env:prod max build",
     "build:dev": "pnpm env:dev max build",
@@ -18,8 +17,11 @@
     "lint:js": "eslint --cache --ext .js,.jsx,.ts,.tsx --format=pretty ./src",
     "lint:prettier": "prettier --check \"src/**/*\" --end-of-line auto",
     "locale:remove": "tsx script/locale-remove",
-    "locale:translate": "tsx script/locale-translate",
+    "locale:init": "tsx script/locale-init",
     "locale:extract": "tsx script/locale-extract",
+    "locale:lobe-init": "lobe-i18n -o",
+    "locale:translate": "lobe-i18n",
+    "locale:sync": "npm run locale:extract && npm run locale:translate",
     "pre": "pnpm env:pre max dev",
     "prepare": "husky install",
     "prettier:fix": "prettier --config .prettierrc.js --write 'src/**/*.{js,jsx,tsx,ts,md,json}'",
@@ -27,8 +29,7 @@
     "preview:prod": "pnpm env:prod max preview",
     "umi:clean": "rm -rf node_modules/.cache src/.umi dist",
     "umig": "max g",
-    "build:wasm": "npm run umi:clean  && npm run watch",
-    "watch": "cd wasm-lib && cargo watch -i .gitignore -i 'pkg/*' -s 'wasm-pack build --target web --out-dir pkg'"
+    "build:wasm": "wasm-pack build --out-dir wasm-lib"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": "npm run lint-staged:js",
@@ -46,7 +47,6 @@
     "@ant-design/cssinjs": "^1.20.0",
     "@ant-design/icons": "^5.3.7",
     "@ant-design/pro-components": "^2.7.1",
-    "@wasm-tool/wasm-pack-plugin": "^1.7.0",
     "ahooks": "^3.7.11",
     "antd": "^5.17.0",
     "antd-img-crop": "^4.21.0",
@@ -55,10 +55,10 @@
     "memoize-one": "^6.0.0",
     "react": "^18.2.0",
     "react-fast-marquee": "^1.6.4",
-    "react-intl": "^6.6.6",
     "use-switch-tabs": "^0.2.3"
   },
   "devDependencies": {
+    "@wasm-tool/wasm-pack-plugin": "^1.7.0",
     "@babel/runtime": "^7.24.5",
     "@lobehub/i18n-cli": "^1.18.1",
     "@milahu/patch-package": "^6.4.14",
@@ -68,7 +68,7 @@
     "@types/node": "^18.19.7",
     "@types/react": "^18.3.1",
     "@types/react-dom": "^18.3.0",
-    "@umijs/max": "^4.1.10",
+    "@umijs/max": "^4.2.1",
     "cross-env": "^7.0.3",
     "dotenv": "^16.4.5",
     "eslint": "^9.2.0",

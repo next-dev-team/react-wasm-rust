@@ -9,8 +9,13 @@ import { createElement } from 'react';
 import { defaultSettings } from './utils';
 
 const wasmInit = async () => {
-  const wasm = await import('../wasm-lib');
-  return wasm;
+  try {
+    const wasm = await import('../wasm-lib');
+    return wasm;
+  } catch (e) {
+    console.error(e);
+    return null;
+  }
 };
 
 const loginPath = '/auth/login';

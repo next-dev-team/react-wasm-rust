@@ -80,3 +80,6 @@ dist_electron
 wasm-lib/target
 /target
 /pkg
+
+# tranlsate
+i18n-temp.json
