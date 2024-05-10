@@ -12,6 +12,3 @@ publish = "dist"
 from = "/*"
 status = 200
 to = "/index.html"
-
-[[functions]]
-runtime = "wasm"
