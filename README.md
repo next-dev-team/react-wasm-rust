@@ -3,14 +3,11 @@
 
 The next generation of enterprise web applications with react and wasm `Preview:`<https://wasm-react.netlify.app>
 
--
-
 ## Translate
 
 - Fist init check config in `script/locale/locale-config.json`
-- Run script `script/locale/locale-translate.ts`
 
-### Auto with lobe/i18n using gpt
+### Auto translate with lobe/i18n using gpt
 
 - Setup: `lobe-i18n -0`
 - Enter key or proxy server
@@ -18,13 +15,12 @@ The next generation of enterprise web applications with react and wasm `Preview:
 
 ## Teach Stack & Preparation
 
-- [node](http://nodejs.org/) and [git](https://git-scm.com/) - Project development environment
-- [WasmRust](https://github.com/rustwasm/wasm-bindgen)
+- [Node](http://nodejs.org/) and [git](https://git-scm.com/) - Project development environment
+- [WasmRust](https://github.com/rustwasm/wasm-bindgen) Wasm with rust using Wasm-bindgen
 - [Webpack MFSU](https://umijs.org/blog/mfsu-faster-than-vite) - Familiar with Webpack features
-- [React](https://reactjs.org) - React] official website:
+- [React](https://react.dev/) - React official website
 - [TypeScript](https://www.typescriptlang.org/) - Familiar with the basic syntax of `TypeScript`
-- [Es6+](http://es6.ruanyifeng.com/) - Familiar with es6 basic syntax
-- [Vue-Router-Next](https://next.router.vuejs.org/) - Familiar with the basic use of vue-router
+- [Es6](http://es6.ruanyifeng.com/) - Familiar with es6 basic syntax
 - [Ant-Design V5](https://ant.design) - Enterprise UI library
 - [Antd procomponents](https://procomponents.ant.design/) - Antd procomponent
 
