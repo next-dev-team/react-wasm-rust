@@ -1,7 +1,7 @@
 
 # React-Wasm
 
-The next generation of admin enterprise applications with awesome architecture, x3 time faster development and better performance `Preview:`<https://react-admin-pro.netlify.app>
+The next generation of enterprise web applications with react and wasm `Preview:`<https://wasm-react.netlify.app>
 
 -
 
