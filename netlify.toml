@@ -8,6 +8,9 @@ RUSTUP_TOOLCHAIN = "nightly"
 command = "npx pnpm i --no-frozen-lockfile --store=node_modules/.pnpm-store && npx pnpm run build:pre"
 publish = "dist"
 
+[build.before]
+command = "cargo update"
+
 [[redirects]]
 from = "/*"
 status = 200
