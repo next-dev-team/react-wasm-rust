@@ -2,6 +2,7 @@
   "name": "react-next-admin",
   "version": "0.0.3",
   "private": true,
+  "license": "MIT",
   "scripts": {
     "dev": "pnpm env:dev max dev",
     "build": "pnpm env:prod max build",
