@@ -10,7 +10,7 @@ import {
 import { RequestConfig, request as axios, getLocale } from '@umijs/max';
 import { debounce, isEmpty } from 'lodash-es';
 import { createElement } from 'react';
-import { kmLocale } from './locales/translation/extra-km';
+import { kmLocale } from './locales-base/extra-km';
 import { defaultSettings } from './utils';
 
 const wasmInit = async () => {
