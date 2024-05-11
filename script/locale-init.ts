@@ -1,32 +1,39 @@
 import * as fs from 'fs';
 import * as path from 'path';
-import { allTranslation } from '../src/locales/translation/_all';
-import { filetype, langs } from './locale-config.json';
+import { allTranslation } from '../src/locales-base/_all';
+import { baseTranslate, filetype } from './locale-config.json';
 
 import removeLocale from './locale-remove';
 
-const writeFile = () => {
-  for (const lang of langs) {
-    const localePath = path.resolve(
-      __dirname,
-      `../src/locales/${lang}.${filetype}`,
-    );
-    if (fs.existsSync(localePath)) {
-      console.warn(`Warning: ${localePath} already exist, skipping.`);
-      continue;
-    }
-    const content =
-      filetype === 'json'
-        ? JSON.stringify(allTranslation(lang), null, 2)
-        : `export default allTranslation('${lang}')`;
-    try {
-      fs.writeFileSync(localePath, content);
-    } catch (error) {
-      console.error(`Error when creating ${localePath}`, error);
-    }
+const mergeLocale = (locale: string) => {
+  const localeBasePath = path.resolve(
+    __dirname,
+    `../src/locales-base/${locale}.${filetype}`,
+  );
+  const localePath = path.resolve(
+    __dirname,
+    `../src/locales/${locale}.${filetype}`,
+  );
+  let localeContent: string;
+  try {
+    localeContent = fs.readFileSync(localePath, 'utf8');
+  } catch (error) {
+    console.error(`Error when reading ${localePath}, skipping merge.`, error);
+    return;
+  }
+  const baseContent = allTranslation(locale);
+  const merged = Object.assign({ ...baseContent }, JSON.parse(localeContent));
+
+  try {
+    fs.writeFileSync(localeBasePath, JSON.stringify(baseContent, null, 2));
+    fs.writeFileSync(localePath, JSON.stringify(merged, null, 2));
+  } catch (error) {
+    console.error(`Error when creating ${localePath}`, error);
   }
 };
 
 removeLocale().then(() => {
-  writeFile();
+  for (const lang of [baseTranslate]) {
+    mergeLocale(lang);
+  }
 });

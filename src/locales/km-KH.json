@@ -14,6 +14,17 @@
   "Title": "ចំណងជើង",
   "Todo": "បញ្ជីធ្វើដំណើរការ",
   "Welcome to {lang} {lang1} + {lang2}": "សូមស្វាគមន៍មកកាន់ {lang} {lang1} + {lang2}",
+  "component.switchTabs.closeCurrent": "បិទ​ផ្នែក​បច្ចុប្បន្ន",
+  "component.switchTabs.closeOthers": "បិទ​ផ្នែក​ផ្សេងៗ",
+  "component.switchTabs.closeToRight": "បិទ​ផ្នែក​ទៅ​ស្តាំ",
+  "component.tagSelect.all": "ទាំងអស់",
+  "component.tagSelect.collapse": "បង្រួម",
+  "component.tagSelect.expand": "ពង្រីក",
   "documents": "ឯកសារ",
+  "menu.documents": "ឯកសារ",
+  "menu.list_page": "ទំព័រ​បញ្ជី",
+  "menu.list_page.sub_page": "ទំព័រ​រង",
+  "menu.login": "ចូល",
+  "menu.welcome": "សូមស្វាគមន៍",
   "welcome": "សូមស្វាគមន៍"
 }

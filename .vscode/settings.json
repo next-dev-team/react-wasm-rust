@@ -30,8 +30,7 @@
     "bindgen",
     "nocheck"
   ],
-  "i18n-ally.localesPaths": [
-    "lang",
-    "src/locales"
-  ]
+  "i18n-ally.enabledFrameworks": ["react"],
+  "i18n-ally.localesPaths": ["src/locales"],
+  "i18n-ally.keystyle": "nested"
 }

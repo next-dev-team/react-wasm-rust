@@ -39,7 +39,7 @@ const scanTranslateFile = async () => {
       {} as Record<string, string>,
     );
     return { ...acc, ...obj };
-  }, Promise.resolve());
+  }, Promise.resolve({}));
   return result;
 };
 
@@ -47,7 +47,8 @@ export const syncLocale = async () => {
   // start scan and write to file
   scanTranslateFile()
     .then((result) => {
-      const jsonRes = JSON.stringify(result, null, 2);
+      const baseContent = allTranslation(baseTranslate);
+      const jsonRes = JSON.stringify({ ...baseContent, ...result }, null, 2);
       console.log('[locale sync]:', jsonRes);
       fs.writeFile(
         path.resolve(__dirname, `../src/locales/${baseTranslate}.json`),

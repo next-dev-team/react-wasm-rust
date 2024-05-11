@@ -1,0 +1,14 @@
+{
+  "documents": "Documents",
+  "menu.documents": "Documents",
+  "menu.welcome": "Welcome",
+  "menu.login": "Login",
+  "menu.list_page": "List page",
+  "menu.list_page.sub_page": "Sub page",
+  "component.tagSelect.expand": "Expand",
+  "component.tagSelect.collapse": "Collapse",
+  "component.tagSelect.all": "All",
+  "component.switchTabs.closeCurrent": "Close tab",
+  "component.switchTabs.closeOthers": "Close other tabs",
+  "component.switchTabs.closeToRight": "Close tabs to the right"
+}

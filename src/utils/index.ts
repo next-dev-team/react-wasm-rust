@@ -1,7 +1,7 @@
 /**
  * register auto import
  */
-export { allTranslation } from '@/locales/translation/_all';
+export { allTranslation } from '@/locales-base/_all';
 export {
   PageContainer,
   PageLoading,
