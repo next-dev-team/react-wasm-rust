@@ -18,7 +18,6 @@
     "lint:js": "eslint --cache --ext .js,.jsx,.ts,.tsx --format=pretty ./src",
     "lint:prettier": "prettier --check \"src/**/*\" --end-of-line auto",
     "locale:remove": "tsx script/locale-remove",
-    "locale:init": "tsx script/locale-init",
     "locale:extract": "tsx script/locale-extract",
     "locale:lobe-init": "lobe-i18n -o",
     "locale:translate": "lobe-i18n",

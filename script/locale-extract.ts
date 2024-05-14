@@ -1,6 +1,7 @@
 import { promises as fs } from 'fs';
 import * as glob from 'glob';
 import * as path from 'path';
+import { allTranslation } from '../src/locales-base/_all';
 import { baseTranslate } from './locale-config.json';
 
 const scanTranslateFile = async () => {

@@ -15,7 +15,7 @@
   "Add Todo": "Add Todo",
   "ID": "ID",
   "Title": "Title",
-  "Description": "Description",
+  "I have {{count}} dog{{count:plural:en:||s}}} in the city": "I have {{count}} dog{{count:plural:en:||s}}} in the city",
   "Welcome to {lang} {lang1} + {lang2}": "Welcome to {lang} {lang1} + {lang2}",
   "Testing": "Testing",
   "Decrement": "Decrement",

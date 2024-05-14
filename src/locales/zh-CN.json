@@ -5,7 +5,6 @@
   "Are you sure to remove all todo?": "您确定要删除所有待办事项吗？",
   "Decrement": "递减",
   "Delete": "删除",
-  "Description": "描述",
   "Edit": "编辑",
   "Edit Todo {id}": "编辑待办事项 {id}",
   "ID": "编号",
@@ -26,5 +25,6 @@
   "menu.list_page.sub_page": "子页面",
   "menu.login": "登录",
   "menu.welcome": "欢迎",
-  "welcome": "欢迎"
+  "welcome": "欢迎",
+  "我在城市里有{{count}}只狗": "我在城市里有{{count}}只狗"
 }
