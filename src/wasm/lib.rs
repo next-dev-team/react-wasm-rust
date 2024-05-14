@@ -16,6 +16,32 @@ extern "C" {
 }
 
 #[wasm_bindgen]
+pub fn fibonacci(n: i32) -> i32 {
+    match n {
+        0 => 0,
+        1 => 1,
+        n => {
+            let mut a = 0;
+            let mut b = 1;
+            for _ in 2..n {
+                let sum = a + b;
+                a = b;
+                b = sum;
+            }
+            a + b
+        }
+    }
+}
+
+#[wasm_bindgen]
+pub fn bench_fibonacci(n: i32) -> Result<f64, JsValue> {
+    let start = std::time::Instant::now();
+    fibonacci(n);
+    let elapsed = start.elapsed();
+    Ok(elapsed.as_secs_f64())
+}
+
+#[wasm_bindgen]
 pub fn add(a: i32, b: i32) -> i32 {
     a + b
 }

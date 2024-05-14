@@ -19,6 +19,7 @@ const Login = () => {
     activeTab: 'todo',
     openModal: false,
     todo: wasmTodo.get_todo_items() as Todo[],
+    fabN: _wasm.fibonacci(10),
   });
   const [formRef] = useForm<Todo>();
   const formId = formRef.getFieldValue('id');
@@ -58,6 +59,9 @@ const Login = () => {
   const handleEditClick = (item: Todo) => {
     state.openModal = true;
     formRef.setFieldsValue(item);
+  };
+  const handleFibonacci = (n = 10) => {
+    state.fabN = _wasm.fibonacci(n);
   };
 
   return (
@@ -105,14 +109,27 @@ const Login = () => {
             tab: t('Testing'),
             key: 'test',
             children: (
-              <Space>
-                <Button onClick={handleDec} danger>
-                  {t('Decrement')} -
-                </Button>
-                <GText>{count}</GText>
-                <Button type="primary" onClick={handleAdd}>
-                  {t('Add')} +
-                </Button>
+              <Space size="large">
+                <Space>
+                  <GText>{t('fibonacci of')}</GText>
+                  <InputNumber
+                    min={1}
+                    defaultValue={10}
+                    onChange={(value) =>
+                      handleFibonacci((value as number) || 1)
+                    }
+                  />
+                  <GText>= {state.fabN}</GText>
+                </Space>
+                <Space>
+                  <Button onClick={handleDec} danger>
+                    {t('Decrement')} -
+                  </Button>
+                  <GText>{count}</GText>
+                  <Button type="primary" onClick={handleAdd}>
+                    {t('Add')} +
+                  </Button>
+                </Space>
                 <Button>{_wasm.greet('Sila', true)}</Button>
               </Space>
             ),
