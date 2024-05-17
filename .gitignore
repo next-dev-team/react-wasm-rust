@@ -83,3 +83,4 @@ wasm-lib/target
 
 # tranlsate
 i18n-temp.json
+.swc/plugins/

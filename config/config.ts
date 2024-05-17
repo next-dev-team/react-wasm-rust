@@ -33,6 +33,7 @@ if (!appEnv) {
 export default defineConfig({
   clickToComponent: {},
   npmClient: 'pnpm',
+  srcTranspiler: "swc",
   define: {
     ...(getEnv.parsed ?? {}),
     UMI_ENV: getEnv.parsed?.UMI_ENV,
@@ -105,7 +106,7 @@ export default defineConfig({
     exclude: ['wasm-lib'],
   },
 
-  chainWebpack(config, {}) {
+  chainWebpack(config, { }) {
     // when need to import outside src
     config.module.rule('ts-in-node_modules').include.clear();
     // Introduce global public method
