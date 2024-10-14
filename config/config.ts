@@ -32,8 +32,8 @@ if (!appEnv) {
 // all UMI config here
 export default defineConfig({
   clickToComponent: {},
-  npmClient: 'pnpm',
-  srcTranspiler: "swc",
+  npmClient: 'yarn',
+  // srcTranspiler: "swc",
   define: {
     ...(getEnv.parsed ?? {}),
     UMI_ENV: getEnv.parsed?.UMI_ENV,

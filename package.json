@@ -87,6 +87,7 @@
     "ts-node": "^10.9.2",
     "typescript": "^5.4.5",
     "unplugin-auto-import": "^0.17.5",
+    "wasm-pack": "^0.13.0",
     "webpack": "^5.91.0"
   },
   "engines": {
