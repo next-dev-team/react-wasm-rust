@@ -105,6 +105,7 @@ export default defineConfig({
 
     exclude: ['wasm-lib'],
   },
+  mako: false,
 
   chainWebpack(config, { }) {
     // when need to import outside src
